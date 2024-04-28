@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form id="feedbackForm" action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            var passwordInput = document.getElementById('password').value;
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            
+            if (!passwordRegex.test(passwordInput)) {
+                event.preventDefault(); // Prevent form submission
+                alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+            }
+        });
+    </script>
+</body>
+</html>
